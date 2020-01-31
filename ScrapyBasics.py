@@ -7,6 +7,7 @@ from scrapy.spiders import Spider
 from scrapy.selector import Selector
 from scrapy.loader import ItemLoader
 from scrapy import FormRequest
+from scrapy.crawler import CrawlerProcess
 
 
 class Row(Item):
@@ -33,13 +34,13 @@ class MultasSpider(Spider):
             'javax.faces.ViewState': tokenViewState,
             'form:btnIngresar': 'form:btnIngresar'
         }
-        yield FormRequest(url=self.conslutaURL, formdata=dataUsuario, callback=self.parse_multas)
+        yield FormRequest(url=self.conslutaURL, formdata=dataUsuario, callback=self.parse_multas)        
 
     def parse_multas(self, response):
         selector = Selector(response)
         tabla = selector.xpath('/html/body/div[4]/form/div[2]/div/div/div/div[2]/table/tbody/tr')
         
-        register = []
+        #register = {}
         for index, row in enumerate(tabla):
             field = ItemLoader(Row(), row)
             field.add_xpath('costas','.//td[9]/text()')
@@ -50,16 +51,26 @@ class MultasSpider(Spider):
             field.add_xpath('nroResolucion','.//td[4]/text()')
             field.add_xpath('fechaResolucion','.//td[3]/text()')
             field.add_xpath('idDocument','.//td[2]/text()')
-            field.add_xpath('nroComparendo','.//td[1]/a/text()')
-            register.append(field.load_item())
+            field.add_xpath('nroComparendo','.//td[1]/a/text()')            
+            #register[index] = field.load_item()
+            yield field.load_item()
 
-def CreateDataBase(dbPath):
-    conn = None;
+def CreateDataBase():
+    conn = None
     try:
-        conn = sqlite3.connect(dbPath)
+        conn = sqlite3.connect("MyfirstDb")
         print(sqlite3.version)
     except Error as e:
         print(e)
+    finally:
+        if conn:
+            conn.close()
 
 if __name__ == "__main__":
     CreateDataBase()
+    process = CrawlerProcess({
+        'USER_AGENT': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
+    })
+
+    process.crawl(MultasSpider)
+    process.start()
