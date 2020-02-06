@@ -1,0 +1,14 @@
+setup.py
+ScrapyBasics/__init__.py
+ScrapyBasics/database.py
+ScrapyBasics/items.py
+ScrapyBasics/middlewares.py
+ScrapyBasics/pipelines.py
+ScrapyBasics/settings.py
+ScrapyBasics/spiders/ScrapyBasics.py
+ScrapyBasics/spiders/__init__.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
