@@ -6,7 +6,7 @@ class ScrapybasicsPipeline(object):
     connection = None
 
     def __init__(self):
-        self.connection = self.myDataBase.create_connection() 
+        self.connection = self.myDataBase.create_connection()
         if self.connection is not None:           
             self.myDataBase.create_register_table(self.connection)            
         else:
@@ -17,8 +17,8 @@ class ScrapybasicsPipeline(object):
         with self.connection:            
             ret = self.myDataBase.check_register(self.connection, item['nroComparendo'][0])            
             if ret is None:
-                mydata = (1, item['id'][0], item['placa'][0], item['nroComparendo'][0])
+                mydata = (1, item['id'][0], item['placa'][0], item['estadoComparendo'][0], item['nroComparendo'][0])
                 self.myDataBase.insert_register(self.connection,mydata)
             else:
-                self.myDataBase.update_register(self.connection,(0,item['nroComparendo'][0]))
+                self.myDataBase.update_register(self.connection,(0,item['estadoComparendo'][0],item['nroComparendo'][0]))
         return
