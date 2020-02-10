@@ -1,33 +1,16 @@
 from ast import literal_eval
-#from ScrapyBasics import items
+from ScrapyBasics.items import Row
 from scrapy.spiders import Spider
 from scrapy.selector import Selector
 from scrapy.loader import ItemLoader
 from scrapy import FormRequest
 from scrapy import Request
 
-from scrapy.item import Field
-from scrapy.item import Item
-
-
-class Row(Item):
-    id = Field()
-    placa = Field()
-    nroComparendo = Field()
-    #idDocument = Field()
-    #fechaResolucion = Field()
-    #nroResolucion = Field()
-    #tipoSancion = Field()
-    #estadoComparendo = Field()
-    #valorMulta = Field()
-    #interes = Field()
-    #costas = Field()
-
 class MultasSpider(Spider):
     name = "MultasSpider"
     conslutaURL = "https://portal.barranquilla.gov.co/ConsultaEstadoCuenta/consultaPlaca"
     parameters = {
-        'placas': []#['KKA987','HGM755','QIC457']
+        'placas': []
     }
 
     def __init__(self, arguments, *args, **kwargs):
@@ -66,7 +49,7 @@ class MultasSpider(Spider):
             #field.add_xpath('costas','.//td[9]/text()')
             #field.add_xpath('interes','.//td[8]/text()')
             #field.add_xpath('valorMulta','.//td[7]/text()')
-            #field.add_xpath('estadoComparendo','.//td[6]/text()')
+            field.add_xpath('estadoComparendo','.//td[6]/text()')
             #field.add_xpath('tipoSancion','.//td[5]/text()')
             #field.add_xpath('nroResolucion','.//td[4]/text()')
             #field.add_xpath('fechaResolucion','.//td[3]/text()')

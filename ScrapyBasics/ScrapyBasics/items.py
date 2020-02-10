@@ -10,7 +10,7 @@ class Row(Item):
     #fechaResolucion = Field()
     #nroResolucion = Field()
     #tipoSancion = Field()
-    #estadoComparendo = Field()
+    estadoComparendo = Field()
     #valorMulta = Field()
     #interes = Field()
     #costas = Field()
