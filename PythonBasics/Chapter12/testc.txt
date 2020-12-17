@@ -1,0 +1,4 @@
+This is the first Line
+This is the second Line
+This is the third Line
+This FILE is a copy!
