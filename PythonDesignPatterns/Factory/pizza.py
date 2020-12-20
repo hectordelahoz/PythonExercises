@@ -15,6 +15,9 @@ class Pizza():
     def state(self):
         return self._state
     
+    def slices(self):
+        return self._ingredients['numSlices']
+    
     def flavor(self, newFlavor = None):
         if newFlavor == None:
             return self._flavor
@@ -51,22 +54,28 @@ class Pizza():
     def cut(self):
         if self.state() == 'baked':
             if self.size() == 'small':
-                self.numSlices = 4
+                self._ingredients['numSlices'] = 4
             elif self.size() == 'medium':
-                self.numSlices = 8
+                self._ingredients['numSlices'] = 8
             elif self.size() == 'large':
-                self.numSlices = 16
+                self._ingredients['numSlices'] = 16
             else:
                 self.numSlices = 0
+            self._state = 'cutted'
         else:
             print(f'This pizza can not be cut!: {self._state}')
-        
         return self
-            
+    
+    def box(self):
+        if self.state() == 'cutted':
+            self._state = 'boxed'
+        else:
+            print(f'This pizza can not be boxed!: {self._state}')
+        return self
     
     def __str__(self):
         string = ''
-        string += f'I\'m a {self.size()} sized {self.flavor()} pizza\n'
+        string += f'I\'m a {self.size()} sized {self.flavor()} pizza\n'        
         string += f'My Ingridients are: \n'
         ingredients = self.ingredients()
         for ingredient in ingredients:
