@@ -1,7 +1,7 @@
 from pepperoni import Peperoni
 from tuna import Tuna
 
-def createPizza(**kwargs):        
+def createPizza(**kwargs):
     if 'flavor' not in kwargs:
         raise TypeError(f'At least Flavor must be informed')
     if kwargs['flavor'] == 'peperoni':

@@ -1,10 +1,19 @@
-import simpleFactory
+from abc import ABC, abstractmethod
 
-def main():
-    myFirstPizza = simpleFactory.createPizza(**{'flavor':'peperoni'})
-    myFirstPizza.prepare()
-    myFirstPizza.bake()
-    print(myFirstPizza.state())
+class PizzaStore():
 
-if __name__ == "__main__":
-    main()
+    @abstractmethod
+    def createPizza(self, **kwargs):
+        pass
+
+    def orderPizza(self, **kwargs):
+        pizza = self.createPizza(**kwargs)        
+        pizza.prepare()
+        print(f'your {pizza.flavor()} pizza is now {pizza.state()}')
+        pizza.bake()
+        print(f'your {pizza.flavor()} pizza is now {pizza.state()}')
+        pizza.cut()
+        print(f'your {pizza.flavor()} pizza is now {pizza.state()}')
+        pizza.box()
+        print(f'your {pizza.flavor()} pizza is now {pizza.state()} and ready')
+        return pizza
