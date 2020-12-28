@@ -10,7 +10,7 @@ class HawaianPizza(Pizza):
         self.bakeTime(40)
         self.cheese(self._ingredientFactory.createCheese())
         self.dough(self._ingredientFactory.createDough())
-        self.meat(self._ingredientFactory.createJam())
+        self.meat(self._ingredientFactory.createHam())
         self.flavor('Hawaian')
         self.size(kwargs['size'] if 'size' in kwargs else 'medium')
         self.souce(self._ingredientFactory.createSouce())

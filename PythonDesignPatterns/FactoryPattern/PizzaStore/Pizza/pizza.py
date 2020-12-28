@@ -103,18 +103,18 @@ class Pizza():
     
     def ingredinetList(self):
         ingredients = {}
-        ingredients['BakeTime'] = bakeTime()
-        ingredients['Cheese'] = cheese()
-        ingredients['Dough'] = dough()
-        ingredients['Meat'] = meat()
-        ingredients['Souce'] = souce()
-        ingredients['Vegies'] = vegies()
-        return ingredients
+        ingredients['BakeTime'] = self.bakeTime()
+        ingredients['Cheese'] = self.cheese()
+        ingredients['Dough'] = self.dough()
+        ingredients['Meat'] = self.meat()
+        ingredients['Souce'] = self.souce()
+        ingredients['Vegies'] = self.vegies()
+        return str(ingredients)
     
     def __str__(self):
         return f'''pizza {self.id()}:
         Flavor = {self.flavor()}
         Size = {self.size()} - Number Of Slices = {self.numberOfSlices()}
-        Ingredients = {x for x in self.ingredients().items()}
+        Ingredients = {self.ingredinetList()}
         State = {self.state()}
         '''

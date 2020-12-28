@@ -14,8 +14,8 @@ class IngredientFactory():
         return 'Dough'
 
     @abstractmethod
-    def createJam(self):
-        return 'Jam'
+    def createHam(self):
+        return 'Ham'
 
     @abstractmethod
     def createPepperoni(self):

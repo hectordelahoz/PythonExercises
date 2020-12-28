@@ -1,7 +1,7 @@
 from .ingredientFactory import IngredientFactory
 from .Ingredients.cheeseMusarella import CheeseMusarella
 from .Ingredients.doughNatural import DoughNatural
-from .Ingredients.jamEnglish import JamEnglish
+from .Ingredients.hamEnglish import HamEnglish
 from .Ingredients.pepperoniItalian import PepperoniItalian
 from .Ingredients.sauceTomato import SouceTomato
 
@@ -16,8 +16,8 @@ class IngredientFactoryCH(IngredientFactory):
     def createDough(self):
         return str(DoughNatural())
     
-    def createJam(self):
-        return str(JamEnglish())
+    def createHam(self):
+        return str(HamEnglish())
     
     def createPepperoni(self):
         return str(PepperoniItalian())
