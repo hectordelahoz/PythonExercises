@@ -7,7 +7,7 @@ def findPrimeFactor(number):
                 break
 
 def main():
-    for x in findPrimeFactor(48):
+    for x in findPrimeFactor(24):
         print(x)
 
 if __name__ == "__main__":
