@@ -1,0 +1,4 @@
+folder = child1
+name = file5
+extention = txt
+data = xx/yy/zz

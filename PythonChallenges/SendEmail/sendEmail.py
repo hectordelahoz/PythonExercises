@@ -5,7 +5,7 @@ def send_email(receiver,subject,bodymessage):
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login('notifymebarranquilla@gmail.com', 'Notify@2020')
+    server.login('notifymebarranquilla@gmail.com', 'N*t*f*@2*2*')
     msg = f'Subject: {subject}\n\n{bodymessage}'        
     server.sendmail(
         'notifymebarranquilla@gmail.com',

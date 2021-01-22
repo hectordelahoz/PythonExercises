@@ -1,0 +1,4 @@
+folder = src
+name = file2
+extention = txt
+data = xx/yy/zz
